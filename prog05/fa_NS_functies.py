@@ -34,6 +34,20 @@ def standaardprijs(afstandKM):
     """
     return
 
+def standaardprijs(afstandKM):
+    if afstandKM < 0:     #als de afstand negatief is return 0
+        return(0)
+    elif afstandKM < 50:
+        return(afstandKM * 0.80)
+    else:
+        return(15 + (afstandKM * 0.60)) # *0.60 is 40% korting
+    
+afstand = int(input('afstand: '))
+#stprijs is afkorting van standaardprijs
+stprijs = standaardprijs(afstand)
+
+
+
 
 def ritprijs(leeftijd, weekendrit, afstandKM):
     """
@@ -57,7 +71,27 @@ def ritprijs(leeftijd, weekendrit, afstandKM):
         float: De berekende ritprijs.
     """
     return
+def ritprijs(leeftijd, weekendrit=True, afstandKM=0):
+        if leeftijd <12:
+            prijs = (stprijs * 0.70)  # stprijs is de uitkomst van standaardprijs als we die * 0.70 doen krijgen we 30% korting
+        elif leeftijd >65:
+            prijs = (stprijs * 0.70)
+        else:
+            prijs = (stprijs)
+#als het een weekendrit is(True) dan gaan we uit van het volgende
+        if weekendrit:
+            if leeftijd <12:
+                print(stprijs * 0.65)
+            elif leeftijd >65:
+                print(stprijs * 0.65)
+            else:
+                print(stprijs * 0.60)
+        else:
+            print(prijs)
+        if afstandKM:
+            afstandK = (afstand)
 
+ritprijs(15, True,afstand)
 
 def development_code():
     # Plaats hieronder code om je functies tussentijds te testen. Bijv:
